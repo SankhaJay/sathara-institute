@@ -18,7 +18,7 @@
         <a class="nav-link" href="<?php echo base_url();?>/">Results <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Time Table</a>
+        <a class="nav-link" href="<?php echo base_url();?>Time_Table/view">Time Table</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url();?>Notice/view">Notice Board</a>
