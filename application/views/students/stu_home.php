@@ -1,2 +1,6 @@
-This is student home page
-<?php echo 'welcome '.$name ?>
+<?php
+    $this->load->view('students/stu_header',$name);
+    echo 'welcome '.$name;
+    $this->load->view('templates/footer');
+
+?>

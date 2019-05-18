@@ -3,7 +3,7 @@
         public function login($data){
             $this->load->database();
             $condition = "id=" . "'" . $data['id'] . "' AND " . "pass=" . "'" . $data['pass'] . "'";
-            $query = $this->db->get_where('students',$condition);
+            $query = $this->db->get_where('login',$condition);
             $temp = $query->result();
             if ($query->num_rows() == 1) {
                 if($temp[0]->is_set==0){
@@ -25,8 +25,25 @@
             $condition1 = "email =" . "'" . $data['email'] . "'";
             $condition2 = "id =" . "'" . $data['id'] . "'";
             $query = $this->db->get_where('students',$condition1);
-            if($query->num_rows() == 0){
-                $this->db->update('students', $data, $condition2);
+            $query_stu = $this->db->get_where('students',$condition2);
+            $query_log = $this->db->get_where('login',$condition2);
+            $login_data = array(
+                'id' => $data['id'],
+                'pass' =>$data['pass']);
+            $student_data = array(
+                'id' => $data['id'],
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'school' => $data['school'],
+                'grade' => $data['grade'],
+                'p_name' => $data['p_name'],
+                'p_no' => $data['p_no'],);
+            if($query->num_rows() == 0 && $query_log->num_rows() == 1){
+                $this->db->insert('students', $student_data, $condition2);
+                $this->db->update('login', $login_data, $condition2);
+                $this->db->where($condition2);
+                $this->db->set('is_set','1');
+                $this->db->update('login');
                 return true;
             }
             else{
@@ -46,5 +63,4 @@
                 return false;
             }
         }
-    }    
-?>
+    }
