@@ -8,7 +8,16 @@ class Admin extends CI_Controller{
 		$this->load->model('Admin_Model');
         $this->load->view('admin/admin_time');
         $this->load->view('templates/footer');
-		//echo "Test";
+    }
+
+    public function notice_board(){
+        $this->load->view('admin/admin_header',$_SESSION);
+		$this->load->model('Admin_Model');
+        $result['notices'] = $this->Admin_Model->show_notice_board();
+        if($result == true){
+			$this->load->view('admin/noticeboard/view',$result);
+		}
+        $this->load->view('templates/footer');
     }
     
     public function show_add_slot(){
@@ -30,7 +39,69 @@ class Admin extends CI_Controller{
         $this->load->view('admin/timetable/delete');
         $this->load->view('templates/footer'); 
     }
+
+    public function show_add_notice(){
+        $this->load->view('admin/admin_header',$_SESSION);
+        $this->load->model('Admin_Model');
+        $this->load->view('admin/noticeboard/add');
+        $this->load->view('templates/footer'); 
+    }
+
+    public function show_edit_notice($temp){ 
+        $data = array('id' =>$temp);
+        $this->load->view('admin/admin_header',$_SESSION);
+        $this->load->model('Admin_Model');
+        $this->load->view('admin/noticeboard/edit',$data);
+        $this->load->view('templates/footer'); 
+    }
     
+    public function add_notice(){
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('body', 'Content', 'required');
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('admin/admin_header',$_SESSION);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = array(
+                'title' => $this->input->post('title'),
+                'body' => $this->input->post('body'));
+                $this->load->model('Admin_Model');
+                $result['notices'] = $this->Admin_Model->add_notice($data);
+                if($result == true){
+                    $this->load->view('admin/admin_header',$_SESSION);
+		$this->load->model('Admin_Model');
+        $result['notices'] = $this->Admin_Model->show_notice_board();
+        if($result == true){
+			$this->load->view('admin/noticeboard/view',$result);
+		}
+        $this->load->view('templates/footer');
+                } 
+        }
+    }
+
+    public function edit_notice($temp){
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('body', 'Content', 'required');
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('admin/admin_header',$_SESSION);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = array(
+                'id' => $temp,
+                'title' => $this->input->post('title'),
+                'body' => $this->input->post('body'));
+                $this->load->model('Admin_Model');
+                $result['notices'] = $this->Admin_Model->edit_notice($data);
+                if($result == true){
+                    $this->load->view('admin/admin_header',$_SESSION);
+		            $this->load->model('Admin_Model');
+                    $this->load->view('admin/noticeboard/view',$result);
+                    $this->load->view('templates/footer');
+                } 
+        }
+    }
     
     public function add_slot(){
         $this->form_validation->set_rules('day', 'Day', 'required');

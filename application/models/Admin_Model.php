@@ -67,5 +67,36 @@
                 return false;
             }
         }
+
+        public function show_notice_board(){
+            $this->load->database();
+            $this->db->order_by('id', 'DESC');
+            $query = $this->db->get('notices');
+            return $query->result_array();
+        }
+
+        public function add_notice($data){
+            $this->load->database();
+            $this->db->insert('notices',$data);
+            $this->db->order_by('id', 'DESC');
+            $query = $this->db->get('notices'); 
+            return $query->result_array();
+        }
+
+        public function edit_notice($data){
+            $this->load->database();
+            $condition = "id="."'".$data['id']."'";
+            $query = $this->db->get_where('notices',$condition);
+            if($query->num_rows() == 1){
+                $temp_data = array(
+                    'title' => $data['title'],
+                    'body' => $data['body']);
+                $this->db->where($condition);
+                $this->db->update('notices', $temp_data);
+                $this->db->order_by('id', 'DESC');
+                $temp =  $this->db->get('notices');
+                return $temp->result_array();
+            }
+        }
     }    
 ?>

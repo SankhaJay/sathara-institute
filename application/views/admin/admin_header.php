@@ -21,7 +21,7 @@
         <a class="nav-link" href="<?php echo base_url();?>Admin/time_table">Time Table</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url();?>Notice/view">Notice Board</a> 
+        <a class="nav-link" href="<?php echo base_url();?>Admin/notice_board">Notice Board</a> 
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url();?>/about">Explore</a>

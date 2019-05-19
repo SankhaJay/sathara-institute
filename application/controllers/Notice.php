@@ -9,8 +9,6 @@ class Notice extends CI_Controller {
 		$this->load->model('Notice_Model');
 		$result['notices'] = $this->Notice_Model->returnNotices();
 		if($result == true){
-			
-			
 			$this->load->view('notice_board',$result);
 		}
 		
