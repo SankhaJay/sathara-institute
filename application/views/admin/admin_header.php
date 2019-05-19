@@ -18,10 +18,10 @@
         <a class="nav-link" href="<?php echo base_url();?>/">Results <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url();?>Time_Table/view_student">Time Table</a>
+        <a class="nav-link" href="<?php echo base_url();?>Admin/time_table">Time Table</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url();?>Notice/view">Notice Board</a>
+        <a class="nav-link" href="<?php echo base_url();?>Notice/view">Notice Board</a> 
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url();?>/about">Explore</a>
@@ -31,6 +31,6 @@
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <button type="button" class="btn btn-primary btn-lg" style="margin-left:5">Welcome <?php echo $name;?></button>
+    <button type="button" class="btn btn-primary btn-lg" style="margin-left:5">Admin</button>
   </div>
 </nav>

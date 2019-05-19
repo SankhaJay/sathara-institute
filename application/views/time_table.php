@@ -1,15 +1,11 @@
 <html>
 <br>
 <style>
-  th,
-  td {
+  th,td {
     padding: 5px;
     text-align: center;
   }
-
-  table,
-  th,
-  td {
+  table,th,td {
     border: 1px solid black;
     border-collapse: collapse;
   }
@@ -24,7 +20,6 @@
       <th colspan="2" scope="row">Wednesday</th>
       <th colspan="2" scope="row">Friday</th>
       <th colspan="2" scope="row">Sunday</th>
-
     </tr>
   </thead>
   <tbody>
@@ -106,5 +101,6 @@
     </tr>
   </tbody>
 </table>
+
 
 </html>

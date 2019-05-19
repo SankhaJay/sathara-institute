@@ -1,5 +1,5 @@
 <?php
-
+echo validation_errors('Your school :');
 echo form_open('pages/data_submitted');
 
 echo form_label('Your ID:', 'id');
