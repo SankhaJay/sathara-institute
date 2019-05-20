@@ -8,7 +8,7 @@
         <?php echo $item['body'];?>
         <?php echo "<br>";?>
         <button type="button" class="btn btn-warning" onclick="location.href='show_edit_notice/<?php echo $item['id'];?>'" >Edit Notice</button>
-        <button type="button" class="btn btn-danger">Delete Notice</button>
+        <button type="button" class="btn btn-danger" onclick="location.href='delete_notice/<?php echo $item['id'];?>'">Delete Notice</button>
         <hr>
     </article>
 <?php endforeach;?>

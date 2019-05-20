@@ -17,7 +17,7 @@
       <th colspan="2" scope="row">Monday</th>
       <th colspan="2" scope="row">Tuesday</th>
       <th colspan="2" scope="row">Wednesday</th>
-      <th colspan="2" scope="row">Wednesday</th>
+      <th colspan="2" scope="row">Thursday</th>
       <th colspan="2" scope="row">Friday</th>
       <th colspan="2" scope="row">Sunday</th>
     </tr>

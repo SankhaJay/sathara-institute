@@ -78,9 +78,7 @@
         public function add_notice($data){
             $this->load->database();
             $this->db->insert('notices',$data);
-            $this->db->order_by('id', 'DESC');
-            $query = $this->db->get('notices'); 
-            return $query->result_array();
+            return true;
         }
 
         public function edit_notice($data){
@@ -93,6 +91,17 @@
                     'body' => $data['body']);
                 $this->db->where($condition);
                 $this->db->update('notices', $temp_data);
+                return true;
+            }
+        }
+
+        public function delete_notice($data){
+            $this->load->database();
+            $condition = "id="."'".$data['id']."'";
+            $query = $this->db->get_where('notices',$condition);
+            if($query->num_rows() == 1){
+                $this->db->where($condition);
+                $this->db->delete('notices');
                 $this->db->order_by('id', 'DESC');
                 $temp =  $this->db->get('notices');
                 return $temp->result_array();

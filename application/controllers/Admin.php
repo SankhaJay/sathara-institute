@@ -47,14 +47,14 @@ class Admin extends CI_Controller{
         $this->load->view('templates/footer'); 
     }
 
-    public function show_edit_notice($temp){ 
-        $data = array('id' =>$temp);
+    public function show_edit_notice($id){ 
+        $data = array('id' =>$id);
         $this->load->view('admin/admin_header',$_SESSION);
         $this->load->model('Admin_Model');
         $this->load->view('admin/noticeboard/edit',$data);
         $this->load->view('templates/footer'); 
     }
-    
+
     public function add_notice(){
         $this->form_validation->set_rules('title', 'Title', 'required');
         $this->form_validation->set_rules('body', 'Content', 'required');
@@ -66,18 +66,28 @@ class Admin extends CI_Controller{
             $data = array(
                 'title' => $this->input->post('title'),
                 'body' => $this->input->post('body'));
-                $this->load->model('Admin_Model');
-                $result['notices'] = $this->Admin_Model->add_notice($data);
-                if($result == true){
-                    $this->load->view('admin/admin_header',$_SESSION);
-		$this->load->model('Admin_Model');
-        $result['notices'] = $this->Admin_Model->show_notice_board();
-        if($result == true){
-			$this->load->view('admin/noticeboard/view',$result);
-		}
-        $this->load->view('templates/footer');
-                } 
+            $this->load->model('Admin_Model');
+            $result = $this->Admin_Model->add_notice($data);
+            if($result == true){
+                $this->load->view('admin/admin_header',$_SESSION);
+                $this->load->view('admin/noticeboard/success_page');
+                $this->load->view('templates/footer');
+            } 
         }
+    }
+
+    public function delete_notice($id){ 
+        $data = array('id' =>$id);
+        
+        $this->load->model('Admin_Model');
+        $result = $this->Admin_Model->delete_notice($data);
+        if($result == true){
+            $this->load->view('admin/admin_header',$_SESSION);
+            $this->load->view('admin/noticeboard/success_page');
+            $this->load->view('templates/footer');
+            
+        }
+        $this->load->view('templates/footer'); 
     }
 
     public function edit_notice($temp){
@@ -92,17 +102,15 @@ class Admin extends CI_Controller{
                 'id' => $temp,
                 'title' => $this->input->post('title'),
                 'body' => $this->input->post('body'));
-                $this->load->model('Admin_Model');
-                $result['notices'] = $this->Admin_Model->edit_notice($data);
-                if($result == true){
-                    $this->load->view('admin/admin_header',$_SESSION);
-		            $this->load->model('Admin_Model');
-                    $this->load->view('admin/noticeboard/view',$result);
-                    $this->load->view('templates/footer');
-                } 
+            $this->load->model('Admin_Model');
+            $result = $this->Admin_Model->edit_notice($data);
+            if($result == true){
+                $this->load->view('admin/admin_header',$_SESSION);
+			    $this->load->view('admin/noticeboard/success_page');
+                $this->load->view('templates/footer');
+            }
         }
     }
-    
     public function add_slot(){
         $this->form_validation->set_rules('day', 'Day', 'required');
         $this->form_validation->set_rules('time', 'Time Slot', 'required');

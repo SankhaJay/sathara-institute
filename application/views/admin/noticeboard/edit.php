@@ -11,7 +11,7 @@ echo form_label('Content', 'body');
 $data = array('name' => 'body', 'class' => 'form-control', 'id' => 'exampleTextarea','rows'=>'5');
 echo form_textarea($data);
 
-$data = array('type' => 'submit', 'value' => 'Submit', 'class' => "btn btn-primary", 'style' => 'margin-left:5;margin-top:5;');
+$data = array('type' => 'submit', 'value' => 'Edit Notice', 'class' => "btn btn-primary", 'style' => 'margin-left:5;margin-top:5;');
 echo form_submit($data);
 
 echo form_close();
