@@ -1,7 +1,19 @@
 <br>
 
+<div class="jumbotron">
+  <h1 class="display-3">Welcome to SATHARA Institute</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
+  <h3>We provide you expert tution from experienced school teachers.</h3>
+  
+</div>
+
+
+<h2>Login to our system and explore our services.</h2>
+<hr>
+
 <div class=options_boards style="display: flex; justify-content: center;margin-top:20">
-  <div class="card text-white bg-success mb-3" style="width: 20rem;margin-right:50">
+  <div class="card text-white bg-success mb-3" style="width: 40rem;">
     <div class="card-header">Member of our class?</div>
     <div class="card-body">
       <h4 class="card-title">Enter your Sathara ID and password</h4>
@@ -28,11 +40,6 @@
     </div>
   </div>
 
-  <div class="card text-white bg-success mb-3" style="width: 20rem;">
-    <div class="card-header">Header</div>
-    <div class="card-body">
-      <h4 class="card-title">Success card title</h4>
-      <p class="card-text"><button type="button" onclick="window.location.href = '';" class="btn btn-primary">Continue as a guest</button></p>
-    </div>
-  </div>
-</div>
+  <p class="lead">
+ <a class="btn btn-primary btn-lg" href="#" role="button" style="width: 40rem;margin-right:10;margin-left:10;margin-top:150;height:100;font-size:45;">or Continue as a Guest User</a>
+  </p>

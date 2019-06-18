@@ -24,6 +24,9 @@
         <a class="nav-link" href="<?php echo base_url();?>Admin/notice_board">Notice Board</a> 
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url();?>Admin/teachers">Teachers</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url();?>/about">Explore</a>
       </li>
     </ul>
@@ -32,5 +35,6 @@
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
     <button type="button" class="btn btn-primary btn-lg" style="margin-left:5">Admin</button>
+    <button type="button" class="btn btn-danger" style="margin-left:5" onclick="location.href='<?php echo base_url();?>pages/logout'">Logout</button>
   </div>
 </nav>

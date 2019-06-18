@@ -19,6 +19,17 @@ class Admin extends CI_Controller{
 		}
         $this->load->view('templates/footer');
     }
+
+    public function teachers(){
+        $this->load->view('admin/admin_header',$_SESSION);
+        //$this->load->view('admin/teachers/view');
+		$this->load->model('Admin_Model');
+        $result['teachers'] = $this->Admin_Model->show_teachers();
+        if($result == true){
+			$this->load->view('admin/teachers/view',$result);
+		}
+        $this->load->view('templates/footer');
+    }
     
     public function show_add_slot(){
         $this->load->view('admin/admin_header',$_SESSION);
@@ -95,6 +106,7 @@ class Admin extends CI_Controller{
         $this->form_validation->set_rules('body', 'Content', 'required');
         if($this->form_validation->run() == FALSE){
             $this->load->view('admin/admin_header',$_SESSION);
+            $this->load->view('templates/footer');
             $this->load->view('templates/footer');
         }
         else{
@@ -205,6 +217,87 @@ class Admin extends CI_Controller{
                     $this->load->view('templates/footer');
                 }
         }
+    }
+
+    public function show_add_teacher(){
+        $this->load->view('admin/admin_header',$_SESSION);
+        $this->load->model('Admin_Model');
+        $this->load->view('admin/teachers/add');
+        $this->load->view('templates/footer'); 
+    }
+
+    public function add_teacher(){
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('id', 'ID', 'required');
+        $this->form_validation->set_rules('p_no', 'Phone No', 'required|regex_match[/^[0-9]{10}$/]');
+        $this->form_validation->set_rules('subject', 'Subject', 'required');
+        if($this->form_validation->run() == FALSE){
+            echo "bhsjab";
+            $this->load->view('admin/admin_header',$_SESSION);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = array(
+                'name' => $this->input->post('name'),
+                'id' => $this->input->post('id'),
+                'email' => $this->input->post('email'),
+                'p_no' => $this->input->post('p_no'),
+                'subject' => $this->input->post('subject'));
+            $this->load->model('Admin_Model');
+            $result = $this->Admin_Model->add_teacher($data);
+            if($result == true){
+                $this->load->view('admin/admin_header',$_SESSION);
+                $this->load->view('admin/teachers/success_page');
+                $this->load->view('templates/footer');
+            } 
+        }
+    }
+
+    public function show_edit_teacher($id){ 
+        $data = array('id' =>$id);
+        $this->load->view('admin/admin_header',$_SESSION);
+        $this->load->model('Admin_Model');
+        $this->load->view('admin/teachers/edit',$data);
+        $this->load->view('templates/footer'); 
+    }
+
+    public function edit_teacher($temp){
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('p_no', 'Phone No', 'required|regex_match[/^[0-9]{10}$/]');
+        $this->form_validation->set_rules('subject', 'Subject', 'required');
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('admin/admin_header',$_SESSION);
+            $this->load->view('templates/footer');
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = array(
+                'id' => $temp,
+                'name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'p_no' => $this->input->post('p_no'),
+                'subject' => $this->input->post('subject'));
+            $this->load->model('Admin_Model');
+            $result = $this->Admin_Model->edit_teacher($data);
+            if($result == true){
+                $this->load->view('admin/admin_header',$_SESSION);
+			    $this->load->view('admin/teachers/success_page');
+                $this->load->view('templates/footer');
+            }
+        }
+    }
+
+    public function delete_teacher($id){ 
+        $data = array('id' =>$id);
+        $this->load->model('Admin_Model');
+        $result = $this->Admin_Model->delete_teacher($data);
+        if($result == true){
+            $this->load->view('admin/admin_header',$_SESSION);
+            $this->load->view('admin/teachers/success_page');
+            $this->load->view('templates/footer');
+            
+        }
+        $this->load->view('templates/footer'); 
     }
 	
 }

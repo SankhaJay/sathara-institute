@@ -1,6 +1,6 @@
 <br>
 <?php
-echo 99;
+
 echo validation_errors();
 echo form_open('Admin/add_notice');
 

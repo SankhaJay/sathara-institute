@@ -21,10 +21,10 @@
         <a class="nav-link" href="#">Features</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">Explore</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url();?>/about">About</a>
+        <a class="nav-link" href="<?php echo base_url();?>pages/view_contact_info">Contact Us</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
