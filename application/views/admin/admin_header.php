@@ -1,5 +1,5 @@
 <html>
-
+<body background="style/school-books-on-desk--education-concept-871454068-5b548900c9e77c005b04fc8c.jpg">
 <head>
     <title>SATHARA</title>
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>style/bootstrap.min.css">
